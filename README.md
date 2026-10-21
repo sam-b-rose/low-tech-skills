@@ -21,6 +21,16 @@ This is an independent interpretation of those ideas, not an official resource f
 
 The hub skill points to the other three, so they work as one review process. Each skill includes short TypeScript patterns, such as staged progress for AI tasks, a typed save state, confirm-with-consequences, and a notification urgency classifier.
 
+## Examples
+
+Try these after installing:
+
+- "Review our onboarding flow for calm, low-tech principles: welcome → 5 permission prompts → suggested-accounts feed."
+- "Our agent tasks take 30s–4min and we show a spinner. Design a better status UI."
+- "Should 'Delete workspace' be one click? Admins want it faster."
+- "Redesign our infinite feed so people reach a clear 'you're caught up' moment."
+- "Sort our notifications into interrupt now / batch / remove."
+
 ## Installation
 
 ### Claude Code (plugin)
