@@ -1,0 +1,12 @@
+{
+  "name": "sam-b-rose",
+  "description": "Plugins and skills by Sam Rose",
+  "owner": { "name": "Sam Rose", "url": "https://github.com/sam-b-rose" },
+  "plugins": [
+    {
+      "name": "low-tech-skills",
+      "source": "./",
+      "description": "Calm, humane product design skills: orientation, useful friction, boundaries, and letting the user go."
+    }
+  ]
+}

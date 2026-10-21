@@ -1,0 +1,35 @@
+name: Release skill zips
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Zip each skill
+        run: |
+          mkdir -p dist
+          cd skills
+          for d in */; do
+            name="${d%/}"
+            zip -qr "../dist/${name}.zip" "$name"
+          done
+          cd ..
+          zip -qr dist/low-tech-skills-all.zip skills
+
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.ref_type == 'tag' && github.ref_name || 'latest' }}
+        run: |
+          gh release view "$TAG" >/dev/null 2>&1 \
+            && gh release upload "$TAG" dist/*.zip --clobber \
+            || gh release create "$TAG" dist/*.zip --title "$TAG" --generate-notes

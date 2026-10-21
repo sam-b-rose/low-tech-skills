@@ -1,0 +1,10 @@
+{
+  "name": "low-tech-skills",
+  "displayName": "Low-Tech Skills",
+  "description": "Claude skills for calm, humane product design: orientation, useful friction, boundaries, and letting the user go. Inspired by Jésabel DC's Config 2026 talk.",
+  "author": { "name": "Sam Rose", "url": "https://github.com/sam-b-rose" },
+  "homepage": "https://github.com/sam-b-rose/low-tech-skills",
+  "repository": "https://github.com/sam-b-rose/low-tech-skills",
+  "license": "MIT",
+  "keywords": ["design", "ux", "calm-technology", "design-review", "skills"]
+}
