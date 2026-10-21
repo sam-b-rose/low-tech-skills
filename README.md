@@ -36,3 +36,7 @@ for d in */; do [ -f "$d/SKILL.md" ] && zip -qr "${d%/}.zip" "$d"; done
 ## Contributing
 
 These are a starting point. Try them on real flows, see where the rubric or patterns feel off, and refine. Issues and PRs are welcome.
+
+## License
+
+[MIT](./LICENSE). The skills are an independent interpretation of the talk; the talk itself belongs to its speaker and Figma.
