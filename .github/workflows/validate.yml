@@ -1,0 +1,41 @@
+name: Validate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install Claude Code
+        run: npm install -g @anthropic-ai/claude-code
+
+      - name: Validate plugin and marketplace
+        run: claude plugin validate .
+
+      - name: Check skill frontmatter
+        run: |
+          status=0
+          for f in skills/*/SKILL.md; do
+            dir=$(basename "$(dirname "$f")")
+            name=$(awk '/^---$/{n++; next} n==1 && /^name:/{sub(/^name:[ ]*/, ""); print; exit}' "$f")
+            desc=$(awk '/^---$/{n++; next} n==1 && /^description:/{print; exit}' "$f")
+            if [ "$name" != "$dir" ]; then
+              echo "::error file=$f::name '$name' does not match folder '$dir'"
+              status=1
+            fi
+            if [ -z "$desc" ]; then
+              echo "::error file=$f::missing description"
+              status=1
+            fi
+          done
+          exit $status
